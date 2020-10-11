@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>关于我</title>
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/me.css"/>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="_fragments :: menu('关于我')" class="ui inverted attached segment nav-padd-min shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary menu stackable">
+            <h2 class="ui header teal item">Blog</h2>
+            <a href="index.html" class="item head-a m-btn"><i class="home icon"></i>首页</a>
+            <a href="types.html" class="item head-a m-btn"><i class="idea icon"></i>分类</a>
+            <a href="tags.html" class="item head-a m-btn"><i class="tags icon"></i>标签</a>
+            <a href="archives.html" class="item head-a m-btn"><i class="clone icon"></i>归档</a>
+            <a href="about.html" class="item head-a m-btn active"><i class="info icon"></i>关于我</a>
+            <div class="right item head-a m-btn">
+                <div class="ui input icon">
+                    <input type="text" placeholder="Search..."/>
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui black icon button head-btn menu btn" style="position: absolute;top: 0px;right: 2px;">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="padd-huge animated bounceInUp content-animate">
+    <div class="ui container about-pad-con">
+        <div class="ui grid stackable">
+            <div class="twelve wide column">
+                <div class="ui segment">
+                    <img src="img/m.jpg" class="ui fluid rounded image"/>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="text-lined text-spaced">Jason，一个独立开发者，希望结识可以共同成长的小伙伴。</p>
+                    <p class="text-lined text-spaced">热爱编程，正在探索搞笑学习编程技术的方法...</p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui orange basic label about-tags-mar">编程</div>
+                    <div class="ui orange basic label about-tags-mar">运动</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic label about-tags-mar">Java</div>
+                    <div class="ui teal basic label about-tags-mar">MySQL</div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="#" class="ui circular icon button" id="wechat"><i class="wechat icon"></i></a>
+                    <a href="#" class="ui circular icon button" id="qq" data-content="1287532263"
+                       data-position="top center"><i class="qq icon"></i></a>
+                </div>
+                <div class="ui wechat-a flowing popup transition hidden">
+                    <img src="img/wechat.jpg" class="ui rounded image zan"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment footer-padd-max">
+    <div class="ui container center aligned">
+        <div class="ui inverted divided grid stackable">
+            <div class="three wide column" align="center">
+                <img src="img/wechat.jpg" class="ui image rounded" width="140px" height="140px"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui header inverted text-spaced text-lined text-opacity">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui header inverted text-spaced text-lined text-opacity">联系我</h4>
+                <div class="ui inverted link list">
+                    <p class="item">Email：1287532263@qq.com</p>
+                    <p class="item">QQ：1287532263</p>
+                </div>
+            </div>
+            <div class="seven wide column text-spaced text-lined text-opacity">
+                <h4 class="ui header inverted">Blog</h4>
+                <p>这是我的个人博客，会分享关于编程的内容，希望可以给来到这里的人有所帮助...</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="text-spaced text-lined text-opacity">Copyrigth &copy; 2020-2020 Jason Designed by Jason</p>
+    </div>
+</footer>
+<th:block th:replace="_fragments :: script">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/semantic.min.js"></script>
+</th:block>
+<script type="text/javascript">
+    $('.menu.btn').click(function () {
+        $('.m-btn').toggleClass('head-a');
+    });
+    $('#qq').popup();
+    $('#wechat').popup({
+        popup: $('.wechat-a'),
+        position: 'top center'
+    });
+</script>
+</body>
+</html>

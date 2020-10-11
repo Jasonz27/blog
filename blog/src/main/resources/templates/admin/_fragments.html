@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title th:replace="${title}">公共</title>
+    <link rel="stylesheet" th:href="@{/css/semantic.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/me.css}" />
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}" />
+    <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="shortcut icon" th:href="@{/img/favicon.ico}" type="images/x-icon">
+</head>
+<body>
+<!--导航-->
+<nav th:fragment="menu(name)" class="ui inverted attached segment nav-padd-min shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary menu stackable">
+            <h2 class="ui header item"><a th:href="@{/admin/index}" style="color: #00b5ad;">管理后台</a></h2>
+            <a th:href="@{/admin/blog/1}" class="item head-a m-btn" th:classappend="${name eq '博客'}?'active'"><i class="home icon"></i>博客</a>
+            <a th:href="@{/admin/type/1}" class="item head-a m-btn" th:classappend="${name eq '分类'}?'active'"><i class="idea icon"></i>分类</a>
+            <a th:href="@{/admin/tag/1}" class="item head-a m-btn" th:classappend="${name eq '标签'}?'active'"><i class="tags icon"></i>标签</a>
+            <div class="right menu m-btn head-a">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img th:src="@{${session.user.getHeadPic()}}" class="ui avatar image"/> Jason
+                        <i class="dropdown icon"></i>
+                    </div>
+                    <div class="menu">
+                        <a th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui black icon button head-btn menu btn" style="position: absolute;top: 0px;right: 2px;">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<th:block th:fragment="script">
+    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/js/semantic.min.js}"></script>
+    <script th:src="@{/lib/editormd/editormd.min.js}"></script>
+</th:block>
+</body>
+</html>
