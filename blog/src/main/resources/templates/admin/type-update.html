@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>分类修改</title>
+    <link rel="stylesheet" type="text/css" href="../css/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/me.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/editormd/css/editormd.min.css"/>
+</head>
+<body>
+<!--导航-->
+<nav th:replace="admin/_fragments :: menu('分类')" class="ui inverted attached segment nav-padd-min shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary menu stackable">
+            <h2 class="ui header teal item">管理后台</h2>
+            <a href="index.html" class="item head-a m-btn active"><i class="home icon"></i>博客</a>
+            <a href="type.html" class="item head-a m-btn"><i class="idea icon"></i>分类</a>
+            <a href="tags.html" class="item head-a m-btn"><i class="tags icon"></i>标签</a>
+            <div class="right menu m-btn head-a">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img src="../img/per.jpg" class="ui avatar image"/> Jason
+                        <i class="dropdown icon"></i>
+                    </div>
+                    <div class="menu">
+                        <a href="#" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui black icon button head-btn menu btn" style="position: absolute;top: 0px;right: 2px;">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--二级导航-->
+<div class="ui menu attached pointing">
+    <div class="ui container">
+        <div class="right menu">
+            <a th:href="@{/admin/type/input}" class="item teal">新增</a>
+            <a th:href="@{/admin/type/1}" class="item">列表</a>
+        </div>
+    </div>
+</div>
+<!--中间内容-->
+<div style="padding: 6em 0;">
+    <div class="ui container" style="max-width: 50em !important;padding: 6em 6em;">
+        <div class="ui error message animated" th:if="${error ne null}" th:classappend="${error ne null}?'fadeIn'">
+            <i class="close icon"></i>
+            <p th:text="${error}"></p>
+        </div>
+        <form method="post" class="ui form" th:action="@{/admin/type/update}">
+            <div class="field required">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">名称</label>
+                    <input type="text" name="name" th:placeholder="${type.getName()}" required/>
+                    <input type="hidden" name="id" th:value="${type.getId()}">
+                </div>
+            </div>
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button class="ui teal button" type="submit">修改</button>
+            </div>
+        </form>
+    </div>
+</div>
+<th:block th:replace="admin/_fragments :: script">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/semantic.min.js"></script>
+    <script src="../lib/editormd/editormd.min.js"></script>
+</th:block>
+
+<script type="text/javascript">
+    $('.menu.btn').click(function () {
+        $('.m-btn').toggleClass('head-a');
+    });
+    $('.dropdown').dropdown({
+        on: 'hover'
+    });
+    $('.close').click(function () {
+        $('.message').removeClass('fadeIn').addClass('fadeOut').transition('fade');
+    });
+</script>
+</body>
+</html>
